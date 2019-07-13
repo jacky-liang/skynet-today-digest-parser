@@ -17,13 +17,10 @@ _CATEGRORIES = [
 ]
 
 
-_LINK_TEMPLATE = '[{}]({})'
-
-
 if __name__ == "__main__":
     logging.getLogger().setLevel(logging.INFO)
     parser = argparse.ArgumentParser()
-    parser.add_argument('--template_file', '-tf', type=str, default='digest_template')
+    parser.add_argument('--template_file', '-tf', type=str, default='digest_template.md')
     parser.add_argument('--digest_number', '-n', type=int, required=True)
     parser.add_argument('--input_csv', '-i', type=str, required=True)
     parser.add_argument('--output_md', '-o', type=str, required=True)
@@ -39,6 +36,10 @@ if __name__ == "__main__":
     if os.path.isfile(args.output_md):
         if not args.force_overwrite:
             raise ValueError('Cannot overwrite existing output file!')
+
+    logging.info('Loading template from {}'.format(args.template_file))
+    with open(args.template_file, 'r') as f:
+        md_template = f.read()
 
     logging.info('Reading {}'.format(args.input_csv))
     articles_map = {c : [] for c in _CATEGRORIES}
@@ -60,4 +61,33 @@ if __name__ == "__main__":
 
         articles_map[c].append(row)
 
-    import IPython; IPython.embed(); exit(0)
+    logging.info('Populating content...')
+    content = ''
+    for c, items in articles_map.items():
+        if len(items) > 0:
+            content += '### {}\n'.format(c)
+            content += '\n'
+
+            for item in items:
+                if c == 'Mini Briefs':
+                    content += '#### [{}]({})\n'.format(item['Name'], item['URL'])
+                    content += '\n'
+                    content += '{}\n'.format(item['Excerpt'])
+                    content += '<one-two paragraph brief>\n'
+                else:
+                    content += '* [{}]({}) - {}\n'.format(item['Name'], item['URL'], item['Excerpt'])
+
+                content += '\n'
+    
+    # remove the last two empty lines
+    content = content[:-2]
+
+    md = md_template.replace('$digest_number$', str(n)) \
+                    .replace('$digest_number_english$', n_english) \
+                    .replace('$content$', content)
+
+    logging.info('Saving digest markdown...')
+    with open(args.output_md, 'w') as f:
+        f.write(md)
+
+    logging.info('Done!')

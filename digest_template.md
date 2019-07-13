@@ -7,19 +7,19 @@ image: <>
 tags: [<>, <>, <>]
 permalink: /digests/the-$digest_number_english$
 ---
-### Mini Briefs
 
-$mini_briefs$
-
-$article_list$
+$content$
 
 ## Awesome Videos
+
 
 
 ## Favorite Tweet
 
 
+
 ## Favorite Goof
+
 
 
 <hr>
