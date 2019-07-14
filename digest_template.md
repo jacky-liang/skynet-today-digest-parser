@@ -1,10 +1,10 @@
 ---
 title: "Last Week in AI #$digest_number$"
-excerpt: "<>"
-image: <>
+excerpt: ""
+image: 
   feature: content/digests/images/$digest_number$/main.png
   credit:
-tags: [<>, <>, <>]
+tags: [digest]
 permalink: /digests/the-$digest_number_english$
 ---
 
