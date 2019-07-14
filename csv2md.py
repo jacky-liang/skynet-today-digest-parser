@@ -76,7 +76,6 @@ if __name__ == "__main__":
                 if c == 'Mini Briefs':
                     content += '#### [{}]({})\n'.format(item['Name'], item['URL'])
                     content += '\n'
-                    content += '{}\n'.format(item['Excerpt'])
                     content += '<one-two paragraph brief>\n'
                 else:
                     content += '* [{}]({}) - {}\n'.format(item['Name'], item['URL'], item['Excerpt'])
