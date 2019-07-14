@@ -45,13 +45,17 @@ if __name__ == "__main__":
     articles_map = {c : [] for c in _CATEGRORIES}
     csv = pd.read_csv(args.input_csv)
     for row_num, row in csv.iterrows():
+        print()
         print('To which category does this article belong?')
+        print()
         print(row['Name'])
+        print()
         
         for i, c in enumerate(_CATEGRORIES):
             print('{}) {}'.format(i, c))
         while True:
             try:
+                print()
                 c_idx = int(input('Category Number: '))
                 c = _CATEGRORIES[c_idx]
                 break
