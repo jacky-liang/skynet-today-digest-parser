@@ -2,8 +2,8 @@
 title: "Last Week in AI #$digest_number$"
 excerpt: ""
 image: 
-  feature: content/digests/images/$digest_number$/main.png
-  credit:
+  feature: assets/img/digests/$digest_number$/main.png
+  credit: <a href="<Image Source Link>"> <Author> / <Source Name>
 tags: [digest]
 permalink: /digests/the-$digest_number_english$
 ---
