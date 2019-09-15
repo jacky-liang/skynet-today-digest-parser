@@ -4,7 +4,7 @@ excerpt: ""
 image: 
   feature: assets/img/digests/$digest_number$/main.png
   credit: <a href="<Image Source Link>"> <Author> / <Source Name>
-categories: [digest]
+categories: [digests]
 permalink: /digests/the-$digest_number_english$
 ---
 
